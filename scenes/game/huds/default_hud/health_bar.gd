@@ -17,6 +17,7 @@ var opponent_color: Color:
 		opponent_color = value
 		bar.get('theme_override_styles/background').bg_color = opponent_color
 var rank: StringName = &'N/A'
+var lerped_health: float = 0.0
 
 var game: Game
 
@@ -27,10 +28,12 @@ func _ready() -> void:
 		return
 
 	game = Game.instance
+	lerped_health = game.health
 
 
 func _process(delta: float) -> void:
-	bar.value = lerpf(bar.value, game.health, GameUtils.lerp_weight(delta, 5.0))
+	lerped_health = lerpf(lerped_health, game.health, GameUtils.lerp_weight(delta, 5.0))
+	bar.value = lerped_health
 	icons.scale = Vector2(1.2, 1.2).lerp(Vector2.ONE, icon_lerp())
 	position_icons(bar.value)
 
