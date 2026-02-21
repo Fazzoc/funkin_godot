@@ -11,15 +11,15 @@ config_version=5
 [application]
 
 config/name="Friday Night Funkin'"
-config/description="Friday Night Funkin' remade in Godot for performance and stability."
+config/description="Friday Night Funkin' remade in Godot for extensibility and performance."
 config/version="3.0.0-recode/gameplay"
-config/tags=PackedStringArray("2d", "modding", "rhythm")
+config/tags=PackedStringArray("2d")
 run/main_scene="uid://cxk008iuw4n7u"
+config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="res://assets/icon.png"
-config/macos_native_icon="res://assets/apple_icon.icns"
 
 [audio]
 
