@@ -1,0 +1,45 @@
+extends Node2D
+
+
+@export var options: Array[Node2D] = []
+var selected: int = 0
+var active: bool = true
+
+
+func _input(event: InputEvent) -> void:
+	if not active:
+		return
+	if event.is_echo():
+		return
+	if not event.is_pressed():
+		return
+
+	if event.is_action(&"ui_left") or event.is_action(&"ui_right"):
+		change_selection(roundi(Input.get_axis(&"ui_left", &"ui_right")))
+	if event.is_action(&"ui_up") or event.is_action(&"ui_down"):
+		change_selection(roundi(Input.get_axis(&"ui_up", &"ui_down")))
+
+	if event.is_action(&"ui_accept"):
+		active = false
+		GlobalAudio.get_player(^"MENU/CONFIRM").play()
+
+		match options[selected].name:
+			&"yes":
+				OptionsMenu.target_scene = "uid://cxk008iuw4n7u"
+				SceneManager.switch_to(load("uid://3daku38i1a50"))
+			&"no":
+				SceneManager.switch_to(load("uid://cxk008iuw4n7u"))
+
+	if event.is_action(&"ui_cancel"):
+		active = false
+		GlobalAudio.get_player(^"MENU/CANCEL").play()
+		SceneManager.switch_to(load("uid://cxk008iuw4n7u"))
+
+
+func change_selection(amount: int = 0) -> void:
+	options[selected].modulate.a = 0.5
+	selected = wrapi(selected + amount, 0, options.size())
+	options[selected].modulate.a = 1.0
+
+	if amount != 0:
+		GlobalAudio.get_player(^"MENU/SCROLL").play()

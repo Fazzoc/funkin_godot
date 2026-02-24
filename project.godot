@@ -12,14 +12,14 @@ config_version=5
 
 config/name="Friday Night Funkin'"
 config/description="Friday Night Funkin' remade in Godot for extensibility and performance."
-config/version="3.0.0-recode/gameplay"
+config/version="3.0.0-recode"
 config/tags=PackedStringArray("2d")
-run/main_scene="uid://cxk008iuw4n7u"
+run/main_scene="uid://bwcdjku7iww5m"
 config/quit_on_go_back=false
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
-config/icon="res://assets/icon.png"
+config/icon="res://icons/default/original.png"
 
 [audio]
 
@@ -29,15 +29,15 @@ general/ios/mix_with_others=true
 
 [autoload]
 
-Global="*res://scripts/autoload/global.gd"
-GlobalAudio="*res://scenes/autoload/global_audio.tscn"
-Config="*res://scripts/autoload/config.gd"
-Scores="*res://scripts/autoload/scores.gd"
-Keybinds="*res://scripts/autoload/keybinds.gd"
-DebugLabel="*res://scenes/autoload/debug_label.tscn"
-MixerControl="*res://scenes/autoload/mixer_control.tscn"
-SceneManager="*res://scenes/autoload/scene_manager.tscn"
-TouchControls="*res://scenes/autoload/touch_controls.tscn"
+Global="*res://core/autoloads/global.gd"
+GlobalAudio="*res://core/autoloads/global_audio.tscn"
+Config="*res://core/autoloads/config.gd"
+Scores="*res://core/autoloads/scores.gd"
+Keybinds="*res://core/autoloads/keybinds.gd"
+DebugLabel="*res://core/autoloads/debug_label.tscn"
+SoundTtsy="*res://core/autoloads/sound_tray/sound_tray.tscn"
+SceneManager="*res://core/autoloads/scene_manager/scene_manager.tscn"
+TouchControls="*res://core/autoloads/touch_controls/touch_controls.tscn"
 
 [debug]
 
@@ -52,10 +52,6 @@ window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 window/handheld/orientation=4
 window/vsync/vsync_mode=0
-
-[dotnet]
-
-project/assembly_name="Friday Night Funkin-"
 
 [editor]
 
@@ -72,11 +68,12 @@ enabled=PackedStringArray("res://addons/funkin_tools/plugin.cfg", "res://addons/
 
 folder_colors={
 "res://addons/": "gray",
-"res://assets/": "orange",
+"res://core/": "blue",
+"res://icons/": "teal",
+"res://modules/": "purple",
+"res://modules/funkin/": "red",
 "res://plans/": "yellow",
-"res://scenes/": "blue",
-"res://script_templates/": "green",
-"res://scripts/": "pink"
+"res://script_templates/": "green"
 }
 
 [gui]
