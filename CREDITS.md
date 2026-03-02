@@ -6,11 +6,4 @@
 	* [Godot Game Engine](https://godotengine.org)
 - [EIRTeam](https://github.com/EIRTeam)
   * [EIRTeam.FFmpeg](https://github.com/EIRTeam/EIRTeam.FFmpeg) GDExtension
-- [Vortex](https://github.com/Vortex2Oblivion)
-	* Contributor
-- [Sinco](https://github.com/sphis-Sinco)
-	* Contributor
-- [Siwsi](https://github.com/pisayesiwsi)
-	* Contributor
-- [Nebula](https://github.com/nebulazorua)
-	* Contributor
+- Contributor list in-game and on GitHub

@@ -10,16 +10,22 @@ extends CanvasLayer
 @onready var icon_label: Label = %icon_label
 
 var tween: Tween
-var target_bus: StringName = &'Master'
-var preMuteVolume: float = 0.0
+var target_bus: StringName = &"Master"
+
+var muted: bool = false:
+	set(value):
+		AudioServer.set_bus_mute(AudioServer.get_bus_index(target_bus), value)
+	get:
+		return AudioServer.is_bus_mute(AudioServer.get_bus_index(target_bus))
+
 var volume: float = 0.5:
 	set(value):
 		AudioServer.set_bus_volume_db(AudioServer.get_bus_index(target_bus),
 				linear_to_db(value))
 
-		var buses: Dictionary = Config.get_value('sound', 'buses')
+		var buses: Dictionary = Config.get_value("sound", "buses")
 		buses[target_bus] = value * 100.0
-		Config.set_value('sound', 'buses', buses)
+		Config.set_value("sound", "buses", buses)
 	get:
 		return db_to_linear(AudioServer.get_bus_volume_db(\
 				AudioServer.get_bus_index(target_bus)))
@@ -27,7 +33,7 @@ var volume: float = 0.5:
 
 func _ready() -> void:
 	visible = false
-	var buses: Dictionary = Config.get_value('sound', 'buses')
+	var buses: Dictionary = Config.get_value("sound", "buses")
 
 	for bus: String in buses.keys():
 		var bus_index: int = AudioServer.get_bus_index(bus)
@@ -41,36 +47,32 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if not event is InputEventKey:
 		return
-	if not (event.is_action('volume_down') or event.is_action('volume_up') or event.is_action("volume_mute")):
+	if not (event.is_action(&"volume_down") or
+		event.is_action(&"volume_up") or
+		event.is_action(&"volume_mute")
+	):
 		return
 
-	var direction: int = roundi(Input.get_axis('volume_down', 'volume_up'))
-	#if direction == 0:
-		#return
+	var direction: int = roundi(Input.get_axis(&"volume_down", &"volume_up"))
+	if direction == 0 and not event.is_action(&"volume_mute"):
+		return
 
 	if is_instance_valid(tween) and tween.is_running():
 		tween.kill()
 
-	
 	tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 	if not event.is_action_pressed("volume_mute"):
-		tween.tween_property(main_panel, 'size:y', 92, 0.5)
+		tween.tween_property(main_panel, "size:y", 92, 0.5)
 	else:
-		#skips the tween and mutes
 		main_panel.size.y = 92
-		if (volume == 0): 
-			volume = preMuteVolume
-		else:
-			preMuteVolume = volume
-			volume = 0
-			
-	tween.tween_property(main_panel, 'size:y', 0, 0.5).set_delay(1.0)
-	tween.tween_property(self, 'visible', false, 0.0)
+		muted = not muted
+
+	tween.tween_property(main_panel, "size:y", 0, 0.5).set_delay(1.0)
+	tween.tween_property(self, "visible", false, 0.0)
 	visible = true
 
-	var modifier: int = roundi(Input.get_axis('alt', 'shift'))
+	var modifier: int = roundi(Input.get_axis("alt", "shift"))
 	var bus_index: int = AudioServer.get_bus_index(target_bus)
-
 	match modifier:
 		0:
 			volume = clampf(volume + 0.05 * direction, 0.0, 1.0)
@@ -81,6 +83,7 @@ func _input(event: InputEvent) -> void:
 			volume = clampf(volume + 0.01 * direction, 0.0, 1.0)
 
 	bar.value = volume * 100.0
-	volume_label.text = '%d%% Volume' % [roundi(volume * 100.0)]
+	volume_label.text = "%d%% Volume" % [roundi(volume * 100.0)]
 	icon_label.text = target_bus
 	icon.texture = icons[bus_index] if bus_index < icons.size() else icons[0]
+	icon.modulate = Color.INDIAN_RED if muted else Color(0.502, 0.502, 0.502, 1.0)
