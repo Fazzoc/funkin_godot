@@ -15,7 +15,7 @@ var length: float = 0.0:
 	set(value):
 		var update: bool = length != value
 		length = value
-		
+
 		if update:
 			update_sustain()
 var is_sustain: bool = false
@@ -37,7 +37,7 @@ var sustain_timer: float = 0.0:
 	set(v):
 		if not is_sustain:
 			return
-		
+
 		sustain_timer = v
 		sustain.modulate.a = clampf(v / sustain_release_when_hit, 0.0, 1.0)
 var sustain_length_offset: float = 0.0
@@ -76,9 +76,9 @@ func _process(_delta: float) -> void:
 		if is_instance_valid(field):
 			field.remove_note(self)
 		return
-	
+
 	sprite.visible = false
-	
+
 	if sustain_end_time == 0.0:
 		sustain_end_time = data.time + length
 	length = sustain_end_time - Conductor.instance.time
@@ -94,7 +94,7 @@ func _process(_delta: float) -> void:
 			# the press animation over and over rather than
 			# actually trying to hit the same note multiple times.
 			field.hit_note(self)
-			
+
 			if field.is_receptor_held(lane):
 				field.get_receptor_from_lane(lane).hit_note(self)
 
@@ -109,7 +109,7 @@ func update_sustain() -> void:
 
 	var time_factor: float = 1000.0 * 0.45 * absf(field.get_scroll_speed()) \
 			/ scale.y - (tail.size.y * tail.scale.y)
-	sustain.size.y = (data.length + sustain_length_offset) * time_factor
+	sustain.size.y = ((data.length + sustain_length_offset) * time_factor) - tail.size.y
 	clip_rect.size.y = sustain.size.y + (tail.size.y * tail.scale.y) + 256.0
 
 	var clip_target: float = field.receptors[lane].position.y
@@ -144,7 +144,7 @@ func update_sustain() -> void:
 	var offset_modifier: float = -1.0
 	if field.scroll_speed_modifier < 0.0:
 		offset_modifier = 1.0
-	
+
 	sustain.position.y += sustain_length_offset * time_factor * offset_modifier
 	tail.position.x = sustain_tail_offset
 
@@ -178,12 +178,12 @@ func reload_sustain_sprites(skin: NoteSkin = null) -> void:
 	sustain.size.x = skin.sustain_size
 	tail.size.x = skin.sustain_tail_size
 	sustain_tail_offset = skin.sustain_tail_offset
-	
+
 	clip_rect.size.x = maxf(sustain.size.x, tail.size.x) + 78.0
 	clip_rect.position.x = -clip_rect.size.x / 2.0
 	clip_rect.pivot_offset.x = clip_rect.size.x / 2.0
 	sustain.position.x = (clip_rect.size.x - sustain.size.x) / 2.0
-	
+
 	if skin.sustain_tile_texture:
 		sustain.set_script(load("uid://bwf4k5hxjoqaw"))
 		sustain.mirror_every_other = skin.sustain_tile_mirroring
