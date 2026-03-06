@@ -108,8 +108,8 @@ func update_sustain() -> void:
 		return
 
 	var time_factor: float = 1000.0 * 0.45 * absf(field.get_scroll_speed()) \
-			/ scale.y - (tail.size.y * tail.scale.y)
-	sustain.size.y = (data.length + sustain_length_offset) * time_factor
+		/ scale.y - (tail.size.y * tail.scale.y)
+	sustain.size.y = ((data.length + sustain_length_offset) * time_factor) - tail.size.y
 	clip_rect.size.y = sustain.size.y + (tail.size.y * tail.scale.y) + 256.0
 
 	var clip_target: float = field.receptors[lane].position.y

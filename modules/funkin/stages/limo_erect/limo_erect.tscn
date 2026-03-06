@@ -108,7 +108,7 @@ z_index = 20
 position = Vector2(-200, 480)
 sprite_frames = ExtResource("7_dqopq")
 animation = &"background limo blue"
-frame_progress = 0.4837759
+frame_progress = 0.7444079
 centered = false
 script = ExtResource("8_gyo08")
 playing = true
@@ -119,7 +119,7 @@ z_index = 150
 position = Vector2(-120, 550)
 sprite_frames = ExtResource("8_dqopq")
 animation = &"Limo stage"
-frame_progress = 0.21431006
+frame_progress = 0.47494188
 centered = false
 script = ExtResource("8_gyo08")
 playing = true
@@ -233,7 +233,7 @@ script = ExtResource("12_re7xl")
 character_path = "uid://cfd0vee7ua8k7"
 
 [node name="camera_offset" type="Marker2D" parent="spectator" unique_id=906098998]
-position = Vector2(107, -599)
+position = Vector2(107, -536)
 
 [node name="player" type="Marker2D" parent="." unique_id=472062035]
 unique_name_in_owner = true

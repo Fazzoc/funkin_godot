@@ -13,9 +13,7 @@ static var selected: int = 1
 func _ready() -> void:
 	GlobalAudio.music.stop()
 	music.play()
-
-	selected = 0
-	change_selection(1)
+	change_selection()
 
 
 func _input(event: InputEvent) -> void:
@@ -57,4 +55,4 @@ func change_selection(amount: int = 0) -> void:
 	if selected_item is CreditsContributor:
 		info_label.text = selected_item.role
 		info_texture.texture = selected_item.texture
-	GlobalAudio.get_player(^'MENU/SCROLL').play()
+	GlobalAudio.get_player(^"MENU/SCROLL").play()

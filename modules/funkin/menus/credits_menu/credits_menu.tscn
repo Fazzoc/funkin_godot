@@ -13,7 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://dpcti4426mwej" path="res://modules/funkin/menus/credits_menu/contributors/vortex.png" id="6_xc1f4"]
 [ext_resource type="Texture2D" uid="uid://sbaset6yggsb" path="res://modules/funkin/menus/credits_menu/contributors/siwsi.png" id="7_jfhfx"]
 [ext_resource type="Texture2D" uid="uid://b4dt6w5nafr6p" path="res://modules/funkin/menus/credits_menu/contributors/nebula.png" id="8_aave4"]
+[ext_resource type="Texture2D" uid="uid://dotr62vbo74yj" path="res://modules/funkin/menus/credits_menu/contributors/kittysleeper.png" id="10_svqsb"]
 [ext_resource type="Texture2D" uid="uid://dvl1c52hghiew" path="res://modules/funkin/menus/credits_menu/contributors/eir_team.png" id="11_71dcr"]
+[ext_resource type="Texture2D" uid="uid://ddbakd725242s" path="res://modules/funkin/menus/credits_menu/contributors/luscious77_github.jpeg" id="11_tnsff"]
 [ext_resource type="Script" uid="uid://bk4kpu0r530gd" path="res://modules/funkin/menus/credits_menu/contributors/swordcube.gd" id="13_aave4"]
 [ext_resource type="AudioStream" uid="uid://cdx006xagoh7x" path="res://modules/funkin/menus/pause_menu/pico_mix_theme.ogg" id="13_b34ng"]
 [ext_resource type="Texture2D" uid="uid://cdtbh4yrt24tn" path="res://modules/funkin/menus/credits_menu/contributors/sword.png" id="14_71dcr"]
@@ -67,7 +69,7 @@ metadata/_custom_type_script = "uid://bable6fjbwgrq"
 position = Vector2(-480, 325.5)
 script = ExtResource("4_wywfy")
 link = "https://goddess.nekoweb.org"
-role = "Main Developer"
+role = "Engine Creator"
 texture = ExtResource("5_0ng60")
 use_x = false
 offset = Vector2(-480, 0)
@@ -79,7 +81,7 @@ metadata/_custom_type_script = "uid://bable6fjbwgrq"
 position = Vector2(-480, 481)
 script = ExtResource("4_wywfy")
 link = "https://github.com/Vortex2Oblivion"
-role = "Contributor"
+role = "Fixes & Optimizations"
 texture = ExtResource("6_xc1f4")
 target_y = 1
 use_x = false
@@ -92,7 +94,7 @@ metadata/_custom_type_script = "uid://bable6fjbwgrq"
 position = Vector2(-480, 639)
 script = ExtResource("4_wywfy")
 link = "https://github.com/pisayesiwsi"
-role = "Contributor"
+role = "Cutscene & README help"
 texture = ExtResource("7_jfhfx")
 target_y = 2
 use_x = false
@@ -105,7 +107,7 @@ metadata/_custom_type_script = "uid://bable6fjbwgrq"
 position = Vector2(-480, 793)
 script = ExtResource("4_wywfy")
 link = "https://github.com/nebulazorua"
-role = "Contributor"
+role = "Fixed Legacy Chart Bugs"
 texture = ExtResource("8_aave4")
 target_y = 3
 use_x = false
@@ -114,20 +116,46 @@ skin = ExtResource("4_0ng60")
 text = "nebula"
 metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
-[node name="spacer" type="Node2D" parent="list" unique_id=593375683]
-position = Vector2(0, 984)
-script = ExtResource("3_xtkoc")
+[node name="kittysleeper" type="Node2D" parent="list" unique_id=1896161115]
+position = Vector2(-480, 949)
+script = ExtResource("4_wywfy")
+link = "https://github.com/KittySleeper"
+role = "Fixes & Additions"
+texture = ExtResource("10_svqsb")
 target_y = 4
+use_x = false
+offset = Vector2(-480, 0)
+skin = ExtResource("4_0ng60")
+text = "kittysleeper"
+metadata/_custom_type_script = "uid://bable6fjbwgrq"
+
+[node name="luscious77" type="Node2D" parent="list" unique_id=1421911482]
+position = Vector2(-480, 1105.5)
+script = ExtResource("4_wywfy")
+link = "https://github.com/Luscious77"
+role = "Added Volume Muting"
+texture = ExtResource("11_tnsff")
+target_y = 5
+use_x = false
+offset = Vector2(-480, 0)
+skin = ExtResource("4_0ng60")
+text = "luscious77"
+metadata/_custom_type_script = "uid://bable6fjbwgrq"
+
+[node name="spacer" type="Node2D" parent="list" unique_id=593375683]
+position = Vector2(0, 1296)
+script = ExtResource("3_xtkoc")
+target_y = 6
 use_x = false
 skin = ExtResource("4_0ng60")
 centered = true
 metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
 [node name="special_thanks" type="Node2D" parent="list" unique_id=1627242772]
-position = Vector2(-480, 1073)
+position = Vector2(-480, 1385)
 scale = Vector2(1.2, 1.2)
 script = ExtResource("3_xtkoc")
-target_y = 5
+target_y = 7
 use_x = false
 offset = Vector2(-480, -32)
 skin = ExtResource("4_0ng60")
@@ -135,12 +163,12 @@ text = "special thanks"
 metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
 [node name="funkin_crew" type="Node2D" parent="list" unique_id=741503976]
-position = Vector2(-480, 1261.5)
+position = Vector2(-480, 1573.5)
 script = ExtResource("4_wywfy")
 link = "https://github.com/FunkinCrew"
-role = "Made original game"
+role = "Made the Original Game"
 texture = ExtResource("6_fq4y8")
-target_y = 6
+target_y = 8
 use_x = false
 offset = Vector2(-480, 0)
 skin = ExtResource("4_0ng60")
@@ -148,12 +176,12 @@ text = "the funkin crew"
 metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
 [node name="godot_devs" type="Node2D" parent="list" unique_id=1111019336]
-position = Vector2(-480, 1417)
+position = Vector2(-480, 1729)
 script = ExtResource("4_wywfy")
 link = "https://github.com/godotengine/godot/graphs/contributors"
-role = "Made game engine"
+role = "Made the Game Engine"
 texture = ExtResource("5_komaw")
-target_y = 7
+target_y = 9
 use_x = false
 offset = Vector2(-480, 0)
 skin = ExtResource("4_0ng60")
@@ -161,12 +189,12 @@ text = "godot developers"
 metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
 [node name="eir_team" type="Node2D" parent="list" unique_id=259700794]
-position = Vector2(-480, 1574.5)
+position = Vector2(-480, 1886.5)
 script = ExtResource("4_wywfy")
 link = "https://github.com/EIRTeam"
 role = "Made FFmpeg GDExtension"
 texture = ExtResource("11_71dcr")
-target_y = 8
+target_y = 10
 use_x = false
 offset = Vector2(-480, 0)
 skin = ExtResource("4_0ng60")
@@ -175,12 +203,12 @@ metadata/_custom_type_script = "uid://bable6fjbwgrq"
 
 [node name="swordcube" type="Node2D" parent="list" unique_id=1716439119]
 material = SubResource("ShaderMaterial_33ree")
-position = Vector2(-480, 1729)
+position = Vector2(-480, 2041)
 script = ExtResource("13_aave4")
 link = "https://github.com/swordcube"
 role = "emotional support"
 texture = ExtResource("14_71dcr")
-target_y = 9
+target_y = 11
 use_x = false
 offset = Vector2(-480, 0)
 skin = ExtResource("4_0ng60")

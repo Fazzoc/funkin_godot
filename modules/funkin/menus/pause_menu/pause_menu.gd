@@ -52,7 +52,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action(&"ui_down") or event.is_action(&"ui_up"):
-		change_selection(roundi(Input.get_axis("ui_up", "ui_down")))
+		change_selection(roundi(Input.get_axis(&"ui_up", &"ui_down")))
 	if event.is_action(&"ui_accept"):
 		for option: ListedAlphabet in options.get_children():
 			if option.target_y != 0:
@@ -67,7 +67,7 @@ func _input(event: InputEvent) -> void:
 				&"options":
 					OptionsMenu.target_scene = "uid://da8mu3oqto3qq"
 					close()
-					SceneManager.switch_to(load("res://scenes/menus/options_menu.tscn"))
+					SceneManager.switch_to(load("uid://3daku38i1a50"))
 				&"quit":
 					close()
 					Game.instance.finish_song(true)

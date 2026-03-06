@@ -1,29 +1,39 @@
 [gd_scene format=3 uid="uid://d4lyul6n3wfmw"]
 
-[ext_resource type="Script" uid="uid://baq1jchoadbo1" path="res://core/autoloads/debug_label.gd" id="1_itebg"]
+[ext_resource type="Script" uid="uid://baq1jchoadbo1" path="res://core/autoloads/game_overlay.gd" id="1_itebg"]
 [ext_resource type="FontFile" uid="uid://br11pkir6c8as" path="res://core/fonts/jetbrains_mono.ttf" id="2_uhwfu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7j305"]
+bg_color = Color(0, 0, 0, 0.5)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 6.0
+expand_margin_top = 3.0
+expand_margin_right = 6.0
+expand_margin_bottom = 3.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_rqscu"]
 line_spacing = -4.0
 font = ExtResource("2_uhwfu")
 font_size = 14
-outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
-[node name="debug_label" type="CanvasLayer" unique_id=61125803]
+[node name="game_overlay" type="CanvasLayer" unique_id=61125803]
 process_mode = 3
 layer = 64
 script = ExtResource("1_itebg")
 
 [node name="label" type="Label" parent="." unique_id=1548224959]
-offset_left = 7.0
-offset_top = 3.0
-offset_right = 176.0
-offset_bottom = 71.0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 208.0
+offset_bottom = 63.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_7j305")
 text = "0FPS (0.00ms)
-0MiB / 0MiB (GPU)
-0MiB / 0MiB (CPU)
-Funkin' Godot v0.0.1"
+0MiB / 0MiB (GPU + CPU)
+Funkin' Godot v3.0.0"
 label_settings = SubResource("LabelSettings_rqscu")
 
 [node name="timer" type="Timer" parent="." unique_id=1466977838]
