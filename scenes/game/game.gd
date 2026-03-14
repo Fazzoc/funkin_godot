@@ -342,8 +342,9 @@ func load_from_assets() -> void:
 
 	## HUD Assets
 	hud = assets.get_hud().instantiate()
+	skin = assets.get_hud_skin()
 	if "hud_skin" in hud:
-		hud.hud_skin = assets.get_hud_skin()
+		hud.hud_skin = skin
 	hud_layer.add_child(hud)
 
 	if "player_field" in hud:
